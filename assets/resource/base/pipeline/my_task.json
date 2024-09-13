@@ -1,5 +1,316 @@
 {
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {}
+    "快速匹配": {
+        "recognition": "TemplateMatch",
+        "template": "快速匹配.png",
+        "roi": [
+            986,
+            623,
+            240,
+            76
+        ],
+        "action": "Click",
+        "next": [
+            "开始匹配"
+        ]
+    },
+    "开始匹配": {
+        "recognition": "TemplateMatch",
+        "template": "开始匹配.png",
+        "roi": [
+            949,
+            626,
+            295,
+            76
+        ],
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 13000,
+            "target": [
+                670,
+                0,
+                610,
+                720
+            ],
+            "threshold": 0.99
+        },
+        "next": [
+            "战斗结束确定",
+            "匹配中"
+        ]
+    },
+    "匹配中": {
+        "recognition": "TemplateMatch",
+        "template": "匹配中.png",
+        "post_wait_freezes": {
+            "time": 2500,
+            "target": [
+                659,
+                151,
+                42,
+                33
+            ]
+        },
+        "next": [
+            "战斗结束确定"
+        ]
+    },
+    "战斗结束确定": {
+        "recognition": "TemplateMatch",
+        "template": "确定.png",
+        "roi": [
+            63,
+            606,
+            1178,
+            109
+        ],
+        "action": "Click",
+        "post_delay": 3000,
+        "next": [
+            "战斗结束确定",
+            "快速匹配",
+            "出货"
+        ]
+    },
+    "出货": {
+        "recognition": "TemplateMatch",
+        "template": "jumpArrow.png",
+        "roi": [
+            1162,
+            4,
+            59,
+            61
+        ],
+        "action": "Click",
+        "next": [
+            "战斗结束确定"
+        ]
+    },
+    "start": {
+        "next": [
+            "beforeStartRoll"
+        ]
+    },
+    "clickTalk": {
+        "recognition": "TemplateMatch",
+        "template": "talkArrow.png",
+        "action": "Click",
+        "next": [
+            "clickJumpTalkArrow"
+        ]
+    },
+    "clickJumpTalkArrow": {
+        "recognition": "TemplateMatch",
+        "template": "jumpArrow.png",
+        "action": "Click",
+        "next": [
+            "jumpTalk"
+        ]
+    },
+    "jumpTalk": {
+        "recognition": "TemplateMatch",
+        "template": "confirm.png",
+        "action": "Click",
+        "next": [
+            "beforeStartRoll"
+        ]
+    },
+    "beforeStartRoll": {
+        "post_wait_freezes": {
+            "time": 3000,
+            "threshold": 0.95
+        },
+        "next": [
+            "over",
+            "clickJumpTalkArrow",
+            "selectTalkOption",
+            "selectRandomBuff",
+            "item_directIUse",
+            "item_rivalUse",
+            "item_IUse",
+            "roll"
+        ]
+    },
+    "roll": {
+        "recognition": "TemplateMatch",
+        "template": "roll.png",
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 5000,
+            "threshold": 0.95
+        },
+        "next": [
+            "beforeStartRoll"
+        ]
+    },
+    "over": {
+        "recognition": "TemplateMatch",
+        "template": "battle.png",
+        "action": "Click",
+        "threshold": 0.9,
+        "roi": [
+            1004,
+            630,
+            248,
+            70
+        ]
+    },
+    "selectRandomBuff": {
+        "recognition": "TemplateMatch",
+        "template": "randomBuff.png",
+        "action": "Click",
+        "threshold": 0.9,
+        "roi": [
+            228,
+            118,
+            824,
+            356
+        ],
+        "next": [
+            "beforeStartRoll"
+        ]
+    },
+    "selectTalkOption": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "talkOption.png",
+            "talkOption2.png",
+            "talkOption3.png",
+            "talkOption4.png",
+            "talkOption5.png"
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 3000,
+            "target": [
+                486,
+                246,
+                298,
+                203
+            ]
+        },
+        "next": [
+            "beforeStartRoll"
+        ]
+    },
+    "item_directIUse": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "xingxingka.png",
+            "shenxingka.png",
+            "guijika.png",
+            "liwuka.png",
+            "touzi_ewai.png",
+            "touzi_weili.png",
+            "touzi_weili2.png",
+            "tongfuka.png",
+            "zaizangka.png",
+            "haoyunjianglinka.png",
+            "tongxingka.png",
+            "equanka.png",
+            "touxika.png",
+            "wuyaka.png",
+            "gongyongka.png",
+            "biyouka.png",
+            "zuobika.png"
+        ],
+        "roi": [
+            265,
+            516,
+            671,
+            201
+        ],
+        "action": "Click",
+        "next": [
+            "useItem",
+            "useItemToMe"
+        ]
+    },
+    "item_rivalUse": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "xingxingka.png",
+            "jingyaka.png",
+            "chehoutuika.png",
+            "pohuaika.png",
+            "zhiqueka.png",
+            "cuanquka.png",
+            "laoqianka.png",
+            "pohuaika2.png",
+            "xianhaika.png"
+        ],
+        "roi": [
+            265,
+            516,
+            671,
+            201
+        ],
+        "action": "Click",
+        "next": [
+            "useItemToRival"
+        ]
+    },
+    "item_IUse": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "xingxingka.png",
+            "touzi_haodu.png",
+            "touzi_mingyun.png"
+        ],
+        "action": "Click",
+        "roi": [
+            265,
+            516,
+            671,
+            201
+        ],
+        "next": [
+            "useItemToMe"
+        ]
+    },
+    "useItem": {
+        "recognition": "TemplateMatch",
+        "template": "use.png",
+        "action": "Click",
+        "next": [
+            "beforeStartRoll"
+        ]
+    },
+    "useItemToRival": {
+        "recognition": "TemplateMatch",
+        "template": "fashaliya.png",
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 3000,
+            "threshold": 0.95
+        },
+        "timeout": 5000,
+        "next": [
+            "beforeStartRoll"
+        ]
+    },
+    "useItemToMe": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "me.png",
+            "me2.png",
+            "me3.png",
+            "me4.png"
+        ],
+        "roi": [
+            0,
+            447,
+            275,
+            273
+        ],
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 3000,
+            "threshold": 0.95
+        },
+        "timeout": 5000,
+        "next": [
+            "beforeStartRoll"
+        ]
+    }
 }

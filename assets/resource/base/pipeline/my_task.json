@@ -85,6 +85,31 @@
             "战斗结束确定"
         ]
     },
+    "Monopoly": {
+        "recognition": "TemplateMatch",
+        "template": "前往活动.png",
+        "action": "Click",
+        "next": [
+            "startGame"
+        ]
+    },
+    "startGame": {
+        "recognition": "TemplateMatch",
+        "template": "开始游戏.png",
+        "action": "Click",
+        "post_delay": 5000,
+        "next": [
+            "chooseRole"
+        ]
+    },
+    "chooseRole": {
+        "recognition": "TemplateMatch",
+        "template": "daozei.png",
+        "action": "Click",
+        "next": [
+            "clickTalk"
+        ]
+    },
     "start": {
         "next": [
             "beforeStartRoll"
@@ -124,7 +149,7 @@
             "clickJumpTalkArrow",
             "selectTalkOption",
             "selectRandomBuff",
-            "item_directIUse",
+            "item_directlyUse",
             "item_rivalUse",
             "item_IUse",
             "roll"
@@ -135,7 +160,7 @@
         "template": "roll.png",
         "action": "Click",
         "post_wait_freezes": {
-            "time": 5000,
+            "time": 3000,
             "threshold": 0.95
         },
         "next": [
@@ -152,6 +177,40 @@
             630,
             248,
             70
+        ],
+        "post_wait_freezes": {
+            "time": 13000,
+            "target": [
+                670,
+                0,
+                610,
+                720
+            ],
+            "threshold": 0.99
+        },
+        "next": [
+            "大富翁战斗结束确定"
+        ]
+    },
+    "大富翁战斗结束确定": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "下一步.png",
+            "确定.png",
+            "大富翁结算.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+            14,
+            460,
+            1266,
+            260
+        ],
+        "action": "Click",
+        "post_delay": 6000,
+        "next": [
+            "大富翁战斗结束确定",
+            "Monopoly"
         ]
     },
     "selectRandomBuff": {
@@ -179,6 +238,12 @@
             "talkOption5.png"
         ],
         "threshold": 0.9,
+        "roi": [
+            228,
+            118,
+            824,
+            356
+        ],
         "action": "Click",
         "post_wait_freezes": {
             "time": 3000,
@@ -193,7 +258,7 @@
             "beforeStartRoll"
         ]
     },
-    "item_directIUse": {
+    "item_directlyUse": {
         "recognition": "TemplateMatch",
         "template": [
             "xingxingka.png",
@@ -269,6 +334,7 @@
         ]
     },
     "useItem": {
+        "is_sub": true,
         "recognition": "TemplateMatch",
         "template": "use.png",
         "action": "Click",
@@ -277,6 +343,7 @@
         ]
     },
     "useItemToRival": {
+        "is_sub": true,
         "recognition": "TemplateMatch",
         "template": "fashaliya.png",
         "action": "Click",
@@ -290,6 +357,7 @@
         ]
     },
     "useItemToMe": {
+        "is_sub": true,
         "recognition": "TemplateMatch",
         "template": [
             "me.png",
